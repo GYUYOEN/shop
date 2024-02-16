@@ -40,4 +40,12 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Authority authority;
+
+    @OneToOne
+    @JoinTable(
+            name = "refresh_token",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "rt_id")
+    )
+    private RefreshToken refreshToken;
 }
