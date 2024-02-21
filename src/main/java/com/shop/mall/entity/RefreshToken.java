@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.sql.rowset.Joinable;
+import java.util.StringTokenizer;
 
 @Getter
 @NoArgsConstructor
@@ -14,21 +15,20 @@ import javax.sql.rowset.Joinable;
 public class RefreshToken {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "rt_id")
-    private int id;
+    @Column(nullable = false, name = "rt_key")
+    private String key;
 
-    @Column(name = "rt_value")
-    private String refreshToken;
+    @Column(nullable = false, name = "rt_value")
+    private String value;
 
     @Builder
-    public RefreshToken(int id, String value) {
-        this.id = id;
-        this.refreshToken = value;
+    public RefreshToken(String key, String value) {
+        this.key = key;
+        this.value = value;
     }
 
     public RefreshToken updateValue(String token) {
-        this.refreshToken = token;
+        this.value = token;
         return this;
     }
 }

@@ -32,7 +32,7 @@ public class TokenProvider {
     private final Key key;
 
     // secretKey Base64로 인코딩
-    public TokenProvider(@Value("${jwt.secret.key}") String secretKey) {
+    public TokenProvider(@Value("${jwt.token.key}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }

@@ -1,6 +1,8 @@
 package com.shop.mall.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,8 +11,10 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "user")
-public class User extends BaseEntity {
+@AllArgsConstructor
+@Builder
+@Table(name = "member")
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,11 +45,11 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
-    @OneToOne
-    @JoinTable(
-            name = "refresh_token",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "rt_id")
-    )
-    private RefreshToken refreshToken;
+//    @OneToOne
+//    @JoinTable(
+//            name = "refresh_token",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "rt_id")
+//    )
+//    private RefreshToken refreshToken;
 }
